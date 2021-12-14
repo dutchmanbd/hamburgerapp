@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'components/header.dart';
 import 'categories.dart';
+import 'hamburgers_list.dart';
+import 'detail_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        primaryColor: Colors.teal,
         appBarTheme: const AppBarTheme(
           color: Colors.teal,
           centerTitle: true,
@@ -21,6 +24,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: Hamberger(),
+      routes: {DetailPage.TAG: (_) => DetailPage()},
       debugShowCheckedModeBanner: false,
     );
   }
@@ -53,16 +57,8 @@ class _HambergerState extends State<Hamberger> {
           ),
           Header(),
           Categories(),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Text(
-                "Hamberger",
-                style: TextStyle(
-                  fontSize: 300,
-                ),
-              )
-            ]),
-          )
+          HamburgersList(row: 1),
+          HamburgersList(row: 2)
         ],
       ),
       extendBody: true,
